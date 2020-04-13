@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<PojoCorona> call, Response<PojoCorona> response) {
                 Log.d("AAA", response.body().getDate());
-                Log.d("AAA", response.body().getPaises().toString());
+                Log.d("AAA", response.body().getPaises().get(0).getPais());
             }
 
             @Override
