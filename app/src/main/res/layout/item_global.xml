@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="4dp">
-<androidx.constraintlayout.widget.ConstraintLayout
-
+    app:cardCornerRadius="4dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/pais"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+
+
+
+        <TextView
+            android:id="@+id/global"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Global"
+            android:textColor="#ffffff"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <TextView
         android:id="@+id/label_contagiados"
@@ -33,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pais" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <TextView
         android:id="@+id/num_contagiados"
@@ -44,7 +56,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pais" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <TextView
         android:id="@+id/label_muertes"
@@ -65,7 +77,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/num_contagiados" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -12,6 +12,7 @@ import com.example.recyclernicovid_19.modelo.PojoCorona;
 import com.example.recyclernicovid_19.modelo.api.Api;
 import com.example.recyclernicovid_19.modelo.api.RetrofitClient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -34,7 +35,18 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, response.body().getDate());
                 Log.d(TAG, response.body().getPaises().get(0).getPais());
 
-                initRecycler(response.body().getPaises());
+                List<Pais> pais = new ArrayList<Pais>();
+                pais.add(new Pais(response.body().getGlobal().getTotalConfirmed(), response.body().getGlobal().getTotalDeaths()));
+                int i;
+                for (i=0; i< response.body().getPaises().size(); i++){
+                    pais.add(response.body().getPaises().get(i));
+                }
+                for (i=0; i< pais.size(); i++){
+                    if (i%10==0 && i!=0){
+                        pais.add(i, new Pais());
+                    }
+                }
+                initRecycler(pais);
             }
 
             @Override

@@ -24,6 +24,27 @@ public class Pais {
     @SerializedName("Date")
     protected String fecha;
 
+    public Pais(String pais, String codigo, String slug, int nuevosCasos, int totalCasos, int nuevasMuertes, int muertesTotal, int nuvosRecuperados, int totalRecuperados, String fecha) {
+        this.pais = pais;
+        this.codigo = codigo;
+        this.slug = slug;
+        this.nuevosCasos = nuevosCasos;
+        this.totalCasos = totalCasos;
+        this.nuevasMuertes = nuevasMuertes;
+        this.muertesTotal = muertesTotal;
+        this.nuvosRecuperados = nuvosRecuperados;
+        this.totalRecuperados = totalRecuperados;
+        this.fecha = fecha;
+    }
+    //Contructor para agregar los datos globales
+    public Pais(int totalCasos, int muertesTotal) {
+        this.totalCasos = totalCasos;
+        this.muertesTotal = muertesTotal;
+    }
+
+    public Pais() {
+    }
+
     public String getPais() {
         return pais;
     }
