@@ -42,6 +42,7 @@ public class CoronaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             case PAIS:
                 View itemView3 = infalter.inflate(R.layout.item_pais, parent, false);
                 return new PaisHolder(itemView3);
+
             default:
                 return null;
         }
@@ -54,6 +55,7 @@ public class CoronaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 GlobalHolder globalHolder = (GlobalHolder) viewHolder;
                 globalHolder.contagiados.setText(String.valueOf(paises.get(position).getTotalCasos()));
                 globalHolder.muertes.setText(String.valueOf(paises.get(position).getMuertesTotal()));
+
                 break;
             case PUBLICIDAD:
                 break;
@@ -63,9 +65,11 @@ public class CoronaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 holder.contagiados.setText(String.valueOf(paises.get(position).getTotalCasos()));
                 holder.muertes.setText(String.valueOf(paises.get(position).getMuertesTotal()));
                 break;
+
         }
 
     }
+
 
     @Override
     public int getItemCount() {

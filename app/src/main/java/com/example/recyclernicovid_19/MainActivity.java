@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                         pais.add(i, new Pais());
                     }
                 }
+
                 initRecycler(pais);
             }
 
