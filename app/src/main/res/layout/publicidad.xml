@@ -6,8 +6,11 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin"
-        app:cardCornerRadius="@dimen/redondela">
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginRight="@dimen/paddingRight"
+        android:layout_marginLeft="@dimen/paddingLeft"
+        app:cardCornerRadius="@dimen/redondela"
+        android:padding="@dimen/paddingBottom">
 
         <ImageView
             android:id="@+id/imageView"
