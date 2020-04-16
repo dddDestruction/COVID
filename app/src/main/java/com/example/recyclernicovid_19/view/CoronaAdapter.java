@@ -1,4 +1,4 @@
-package com.example.recyclernicovid_19;
+package com.example.recyclernicovid_19.view;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.recyclernicovid_19.R;
 import com.example.recyclernicovid_19.modelo.Pais;
 
 import java.util.List;
