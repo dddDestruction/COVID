@@ -53,7 +53,7 @@ public class RecyclerViewFragment extends Fragment implements IView, IPresenterV
         this.view = inflater.inflate(R.layout.fragment_recycler_view, container, false);
         iniciarIPresenter();
         getDatosDesdePresenter();
-        callback = (CallBackFragmentRecycler) container.getParent();
+        callback = (CallBackFragmentRecycler) view.getContext();
 
         return view;
     }
