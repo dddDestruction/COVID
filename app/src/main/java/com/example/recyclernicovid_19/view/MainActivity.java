@@ -28,10 +28,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements IView, IPresenterView, CallBackFragmentPais{
+public class MainActivity extends AppCompatActivity implements CallBackFragmentRecycler{
     public static String TAG = "AAA";
     protected List<Pais> paises;
-    protected IPresenter iPresenter;
 
 
     @Override
@@ -39,51 +38,22 @@ public class MainActivity extends AppCompatActivity implements IView, IPresenter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        iniciarIPresenter();
-        getDatosDesdePresenter();
 
-    }
-
-    @Override
-    public void iniciarIPresenter() {
-        iPresenter = new Presenter(this);
-        iPresenter.setIModel(new Modelo((IPresenterModel) iPresenter));
-    }
-
-    @Override
-    public void getDatosDesdePresenter() {
-        iPresenter.getDatosDesdeModel();
-    }
-
-    @Override
-    public void notificarVista(List<Pais> pais) {
-        this.paises = pais;
         RecyclerViewFragment recyclerViewFragment = RecyclerViewFragment.newInstance();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transa = manager.beginTransaction();
         transa.replace(R.id.contenedor, recyclerViewFragment)
                 .addToBackStack("recycler")
                 .commit();
-
-        initRecycler(pais);
     }
-
-    public void initRecycler(List<Pais> paises){
-        RecyclerView recyclerView = findViewById(R.id.recycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(new CoronaAdapter(paises, this, this));
-    }
-
 
     @Override
-    public void notificarOnClickPais(int position) {
-        Log.d(TAG, "POSITION "+ position);
-        Pais pais = paises.get(position);
+    public void notificarPais(Pais pais) {
+        Log.d(TAG, "en notificarPais ");
         PaisesFragment fragment = PaisesFragment.newInstance(pais.getPais(), pais.getCodigo(), pais.getSlug(), pais.getNuevosCasos(), pais.getTotalCasos(), pais.getNuevasMuertes(),
                 pais.getMuertesTotal(), pais.getNuvosRecuperados(), pais.getTotalRecuperados(), pais.getFecha());
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.contenedor, fragment).commit();
-
     }
 }
