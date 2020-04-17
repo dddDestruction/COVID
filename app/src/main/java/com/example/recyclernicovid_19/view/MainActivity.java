@@ -25,10 +25,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements IView, IPresenterView {
+public class MainActivity extends AppCompatActivity implements IView, IPresenterView, CallBackFragmentPais{
     public static String TAG = "AAA";
     protected List<Pais> paises;
     protected IPresenter iPresenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +54,23 @@ public class MainActivity extends AppCompatActivity implements IView, IPresenter
 
     @Override
     public void notificarVista(List<Pais> pais) {
+        this.paises = pais;
         initRecycler(pais);
     }
 
     public void initRecycler(List<Pais> paises){
         RecyclerView recyclerView = findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(new CoronaAdapter(paises, this));
+        recyclerView.setAdapter(new CoronaAdapter(paises, this, this));
     }
 
 
+    @Override
+    public void notificarOnClickPais(int position) {
+        Log.d(TAG, "POSITION "+ position);
+        Pais pais = paises.get(position);
+        PaisesFragment fragment = PaisesFragment.newInstance();
+
+
+    }
 }

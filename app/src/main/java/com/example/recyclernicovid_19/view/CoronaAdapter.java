@@ -16,7 +16,7 @@ import com.example.recyclernicovid_19.modelo.Pais;
 import java.util.List;
 
 public class CoronaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
+    CallBackFragmentPais callBackFragmentPais;
     private static final int GLOBAL = 1;
     private static final int PUBLICIDAD = 2;
     private static final int PAIS = 3;
@@ -24,9 +24,10 @@ public class CoronaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     protected LayoutInflater infalter;
     protected Context context;
 
-    public CoronaAdapter(List<Pais> paises, Context context) {
+    public CoronaAdapter(List<Pais> paises, Context context, CallBackFragmentPais callBackPais) {
         this.paises = paises;
         this.context = context;
+        this.callBackFragmentPais = callBackPais;
     }
 
     @NonNull
@@ -86,8 +87,16 @@ public class CoronaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             this.pais = itemView.findViewById(R.id.pais);
             this.contagiados =itemView.findViewById(R.id.num_contagiados);
             this.muertes =itemView.findViewById(R.id.num_muertes);
+            pais.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callBackFragmentPais.notificarOnClickPais(getAdapterPosition());
+                }
+            });
         }
+
     }
+
 
     public class GlobalHolder extends RecyclerView.ViewHolder{
         private TextView contagiados;
