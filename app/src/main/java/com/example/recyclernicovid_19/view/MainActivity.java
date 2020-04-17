@@ -1,6 +1,7 @@
 package com.example.recyclernicovid_19.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -57,6 +58,13 @@ public class MainActivity extends AppCompatActivity implements IView, IPresenter
     @Override
     public void notificarVista(List<Pais> pais) {
         this.paises = pais;
+        RecyclerViewFragment recyclerViewFragment = RecyclerViewFragment.newInstance();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transa = manager.beginTransaction();
+        transa.replace(R.id.contenedor, recyclerViewFragment)
+                .addToBackStack("recycler")
+                .commit();
+
         initRecycler(pais);
     }
 
