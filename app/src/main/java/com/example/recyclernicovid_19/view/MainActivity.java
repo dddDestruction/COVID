@@ -1,6 +1,8 @@
 package com.example.recyclernicovid_19.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -69,8 +71,11 @@ public class MainActivity extends AppCompatActivity implements IView, IPresenter
     public void notificarOnClickPais(int position) {
         Log.d(TAG, "POSITION "+ position);
         Pais pais = paises.get(position);
-        PaisesFragment fragment = PaisesFragment.newInstance();
-
+        PaisesFragment fragment = PaisesFragment.newInstance(pais.getPais(), pais.getCodigo(), pais.getSlug(), pais.getNuevosCasos(), pais.getTotalCasos(), pais.getNuevasMuertes(),
+                pais.getMuertesTotal(), pais.getNuvosRecuperados(), pais.getTotalRecuperados(), pais.getFecha());
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.contenedor, fragment).commit();
 
     }
 }
